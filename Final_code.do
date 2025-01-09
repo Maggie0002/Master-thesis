@@ -156,11 +156,5 @@ estat aggregation
 xthdidregress aipw (NTL NTL_2001) (PFTZ NTL_2001) if economic_belt ==  "Northeast", group(city_id) controlgroup(notyet) vce(cluster city_id)
 estat aggregation
 
-*Using province with FTZ, not yet treated city are control
-gen FTZ_prov = 1
-replace FTZ_prov = 0 if inlist(province_id, 540000, 640000, 150000, 620000, 520000, 610000)
-xthdidregress twfe (NTL NTL_2001) (PFTZ) if FTZ_prov == 1, group(city_id) controlgroup(notyet) vce(cluster city_id)  
-estat atetplot, name(fig3, replace)
-estat aggregation,overall
 
 
